@@ -4,11 +4,6 @@ target/
 !**/src/main/**
 !**/src/test/**
 
-### MAVEN ##
-.mvn
-mvnw
-mvnw.cmd
-
 ### STS ###
 .apt_generated
 .classpath
@@ -34,3 +29,7 @@ build/
 
 ### VS Code ###
 .vscode/
+log/
+.mvn/
+mvnw.cmd
+mvnw

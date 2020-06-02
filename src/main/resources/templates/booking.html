@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="_fragments::head(~{::title})">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>填写订单</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+    <link rel="stylesheet" href="../static/lib/calendar/calendar.min.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+
+<!--导航-->
+<nav th:replace="_fragments::menu(1)" class="ui inverted attached segment m-padded-tb-mini m-shadow-small">
+    <div class="ui container">
+        <div class="ui inverted secondary stackable menu">
+            <h2 class="ui yellow header item">酒店管理系统</h2>
+            <div class="right m-item m-mobile-hide menu">
+                <div class="ui dropdown item">
+                    <div class="text">
+                        <img class="ui avatar image" src="https://unsplash.it/100/100?image=1005">
+                        管理员
+                    </div>
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <a href="#" class="item">注销</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="#" class="ui menu toggle black icon button m-right-top m-mobile-show">
+        <i class="sidebar icon"></i>
+    </a>
+</nav>
+
+
+<!--中间内容-->
+<div class="m-container-small m-padded-tb-big">
+    <div class="ui container">
+        <!--header-->
+        <div class="ui three steps">
+            <div class="step">
+                <i class="bed icon"></i>
+                <div class="content">
+                    <div class="title">选择房间</div>
+                </div>
+            </div>
+            <div class="active step">
+                <i class="payment icon"></i>
+                <div class="content">
+                    <div class="title red">填写订单</div>
+                </div>
+            </div>
+            <div class="disabled step">
+                <i class="info icon"></i>
+                <div class="content">
+                    <div class="title">确认订单</div>
+                </div>
+            </div>
+        </div>
+        <div class="ui segment items">
+            <div class="item">
+                <div class="content">
+                    <a class="ui header teal" th:text="${room.name}">豪华大床房</a>
+                    <div class="description">
+                        <p>床型：<span th:text="${room.typeId}">大床房</span>
+                            &nbsp;&nbsp;面积：<span th:text="${room.area}">48</span>㎡
+                            &nbsp;&nbsp;楼层：<span th:text="${room.floor}">6-7 </span>
+                            &nbsp;&nbsp;含早：<span th:text="${room.isBreakfast}==0?'不含早':'含双早'">是</span>
+                        </p>
+                    </div>
+                    <div class="extra">
+                        预订成功后，不可变更/取消
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ui top attached teal segment">
+            <div class="ui form">
+                <form action="#" method="post" th:action="@{/hotel/order/{id}(id=*{id})}">
+                    <div class="inline field required">
+                        <label>联系人姓名</label>
+                        <input type="text" name="guestName" placeholder="入住人姓名">
+                    </div>
+
+                    <div class="inline field required">
+                        <label>联系电话</label>
+                        <input type="text" name="guestMobile" placeholder="手机号">
+                    </div>
+
+                    <div class="inline field required">
+                        <label>房间数</label>
+                        <select name="roomCount">
+                            <option value="1" selected>1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                        <span class="extra">每间最多住2人</span>
+                    </div>
+                    <div class="inline field calendar start_time required">
+                        <label>入住时间</label>
+                        <div class="ui input left icon">
+                            <i class="calendar icon"></i>
+                            <input type="text" placeholder="选择入住时间" value="" name="startTime" autocomplete="off">
+                        </div>
+                    </div>
+
+                    <div class="inline field calendar end_time required">
+                        <label>离店时间</label>
+                        <div class="ui input left icon">
+                            <i class="calendar icon"></i>
+                            <input type="text" placeholder="选择离店时间" value="" name="endTime" autocomplete="off">
+                        </div>
+                    </div>
+
+                    <button id="post-order" class="ui teal submit button" style="display: none;">确认</button>
+                </form>
+
+
+                <div class="ui divider"></div>
+
+                <div class="ui middle aligned two column grid">
+                    <div class="column">
+                        <h3 class="ui orange m-inline-block header" th:text="${room.name}">豪华大床房</h3> x <b id="count">1</b>
+                    </div>
+                    <div class="right aligned column">
+                        总计： <h2 id="price" th:attr="data-price=${room.price}" class="ui orange header m-inline-block m-text-thin" th:text="${room.price}"> 360 </h2> 元
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="ui bottom attached segment">
+            <div class="ui right aligned container">
+                <button type="button" class="ui button" onclick="window.history.go(-1)">返回</button>
+                <button class="ui teal submit button sub-btn">提交订单</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<br>
+<br>
+<!--底部footer-->
+<footer th:replace="_fragments::footer" class="ui inverted vertical segment m-padded-tb-massive">
+    <div class="ui center aligned container">
+        <div class="ui inverted section divider"></div>
+        <p class="m-text-thin m-text-spaced m-opacity-tiny">Copyright © 2020 酒店管理系统</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+<script src="/static/lib/calendar/calendar.min.js" th:src="@{/lib/calendar/calendar.min.js}"></script>
+<script src="/static/js/booking.js" th:src="@{/js/booking.js}"></script>
+
+<script>
+    $('.menu.toggle').click(function () {
+        $('.m-item').toggleClass('m-mobile-hide');
+    });
+
+
+</script>
+
+
+</body>
+</html>
