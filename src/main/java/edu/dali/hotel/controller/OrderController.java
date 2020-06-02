@@ -42,10 +42,10 @@ public class OrderController {
                        HttpSession session) {
 
         OrderEntity o;
+        UserEntity user = (UserEntity)session.getAttribute("user");
         order.setRoomId(id);
+        order.setUserId(user.getId());
         o = orderService.saveOrder(order);
-
-        System.out.println(order.toString());
 
         if (o == null) {
             attributes.addFlashAttribute("message", "预订失败");

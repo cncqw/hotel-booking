@@ -7,6 +7,13 @@ body {
     padding: 1.5rem 1rem !important;
 }
 
+.m-text-center{
+    text-align: center;
+}
+
+.m-padding{
+    padding: 3rem!important;
+}
 
 .ui.form .inline.field>label{
     width: 100px;

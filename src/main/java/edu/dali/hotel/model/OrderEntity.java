@@ -21,6 +21,7 @@ public class OrderEntity {
     private Date createdAt;
 
     @Id
+    @GeneratedValue
     @Column(name = "id")
     public int getId() {
         return id;

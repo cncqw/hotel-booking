@@ -11,7 +11,7 @@
 <body>
 
 <!--导航-->
-<nav th:replace="_fragments::menu(1)" class="ui inverted attached segment m-padded-tb-mini m-shadow-small">
+<nav th:replace="_fragments::menu(2)" class="ui inverted attached segment m-padded-tb-mini m-shadow-small">
     <div class="ui container">
         <div class="ui inverted secondary stackable menu">
             <h2 class="ui yellow header item">酒店管理系统</h2>
@@ -154,20 +154,18 @@
         <p class="m-text-thin m-text-spaced m-opacity-tiny">Copyright © 2020 酒店管理系统</p>
     </div>
 </footer>
-
+<!--  <th:block th:replace="_fragment::script">-->
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
-<script src="/static/lib/calendar/calendar.min.js" th:src="@{/lib/calendar/calendar.min.js}"></script>
-<script src="/static/js/booking.js" th:src="@{/js/booking.js}"></script>
 
 <script>
     $('.menu.toggle').click(function () {
         $('.m-item').toggleClass('m-mobile-hide');
     });
-
-
 </script>
-
+<!--  </th:block>-->
+<script src="/static/lib/calendar/calendar.min.js" th:src="@{/lib/calendar/calendar.min.js}"></script>
+<script src="/static/js/booking.js" th:src="@{/js/booking.js}"></script>
 
 </body>
 </html>

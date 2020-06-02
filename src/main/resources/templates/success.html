@@ -10,7 +10,7 @@
 <body>
 
 <!--导航-->
-<nav th:replace="_fragments::menu(1)" class="ui inverted attached segment m-padded-tb-mini m-shadow-small">
+<nav th:replace="_fragments::menu(2)" class="ui inverted attached segment m-padded-tb-mini m-shadow-small">
     <div class="ui container">
         <div class="ui inverted secondary stackable menu">
             <h2 class="ui yellow header item">酒店管理系统</h2>
@@ -38,11 +38,11 @@
 <br>
 
 <div class="m-container-small m-padded-tb-massive">
-    <div class="ui green message m-padded-tb-huge">
-        <div class="ui contianer center aligned">
+    <div class="ui teal center aligned message m-padded-tb-huge">
+        <div class="ui m-text-center">
             <h2><i class="check circle icon"></i> 预订成功</h2>
-            <p>感谢您预定本酒店，如有问题请联系我们！</p>
-            <a href="#" th:href="@{/hotel}" class="ui green button">返回首页</a>
+            <p>感谢您入住本酒店，如有问题请联系我们！</p>
+            <a href="#" th:href="@{/hotel}" class="ui teal button">返回首页</a>
 
 
         </div>
@@ -60,7 +60,6 @@
         <div class="ui inverted section divider"></div>
         <p class="m-text-thin m-text-spaced m-opacity-tiny">Copyright © 2020 酒店管理系统</p>
     </div>
-
 </footer>
 </body>
 </html>
