@@ -4,7 +4,7 @@ spring:
     cache: false
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/hotel?useUnicode=true&characterEncodeing=utf-8&serverTimezone=Hongkong
+    url: jdbc:mysql://localhost:3306/hotel2?useUnicode=true&characterEncodeing=utf-8&serverTimezone=Hongkong
     username: root
     password: qwe123
   jpa:
@@ -17,5 +17,5 @@ logging:
     root: info
     edu.dali: debug
   file:
-    path: log/hotel.log
+    path: log/hotel
 

@@ -10,9 +10,7 @@ import javax.servlet.http.HttpSession;
 public class IndexController {
 
     @GetMapping("/hotel")
-    public String index(HttpSession session,UserEntity user) {
-        Object my = session.getAttribute("user");
-        System.out.println(my);
+    public String index() {
         return "index";
     }
 

@@ -64,7 +64,7 @@ $('.start_time').calendar({
             var day = date.getDate();
             month = month < 10 ? '0' + month : month;
             day = day < 10 ? '0' + day : day;
-            return year + '-' + month + '-' + day + ' 00:00:00';//字段类型是Datetime,节省时间直接在这里处理
+            return year + '-' + month + '-' + day;//字段类型是Datetime,节省时间直接在这里处理
         }
     },
     text: {
@@ -84,7 +84,7 @@ $('.end_time').calendar({
             var day = date.getDate();
             month = month < 10 ? '0' + month : month;
             day = day < 10 ? '0' + day : day;
-            return year + '-' + month + '-' + day + ' 00:00:00';
+            return year + '-' + month + '-' + day;
         }
     },
     text: {

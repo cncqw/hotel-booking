@@ -1,48 +1,41 @@
 package edu.dali.hotel.model;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.*;
-import java.sql.Timestamp;
 import java.util.Date;
 
 @Entity
 @Table(name = "m_order")
 public class OrderEntity {
-    private int id;
-    private Integer roomId;
+    @Id
+    @GeneratedValue
+    private Integer id;
     private Integer roomCount;
-    private Integer userId;
     private String guestName;
     private String guestMobile;
-    private Timestamp startTime;
-    private Timestamp endTime;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date startTime;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date endTime;
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
 
-    @Id
-    @GeneratedValue
-    @Column(name = "id")
-    public int getId() {
+    @ManyToOne
+    private RoomEntity room;
+
+    @ManyToOne
+    private UserEntity user;
+
+    public OrderEntity() {
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "room_id")
-    public Integer getRoomId() {
-        return roomId;
-    }
-
-    public void setRoomId(Integer roomId) {
-        this.roomId = roomId;
-    }
-
-    @Basic
-    @Column(name = "room_count")
     public Integer getRoomCount() {
         return roomCount;
     }
@@ -51,18 +44,6 @@ public class OrderEntity {
         this.roomCount = roomCount;
     }
 
-    @Basic
-    @Column(name = "user_id")
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
-    @Basic
-    @Column(name = "guest_name")
     public String getGuestName() {
         return guestName;
     }
@@ -71,8 +52,6 @@ public class OrderEntity {
         this.guestName = guestName;
     }
 
-    @Basic
-    @Column(name = "guest_mobile")
     public String getGuestMobile() {
         return guestMobile;
     }
@@ -81,28 +60,22 @@ public class OrderEntity {
         this.guestMobile = guestMobile;
     }
 
-    @Basic
-    @Column(name = "start_time")
-    public Timestamp getStartTime() {
+    public Date getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Timestamp startTime) {
+    public void setStartTime(Date startTime) {
         this.startTime = startTime;
     }
 
-    @Basic
-    @Column(name = "end_time")
-    public Timestamp getEndTime() {
+    public Date getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Timestamp endTime) {
+    public void setEndTime(Date endTime) {
         this.endTime = endTime;
     }
 
-    @Basic
-    @Column(name = "created_at")
     public Date getCreatedAt() {
         return createdAt;
     }
@@ -111,18 +84,34 @@ public class OrderEntity {
         this.createdAt = createdAt;
     }
 
+    public RoomEntity getRoom() {
+        return room;
+    }
+
+    public void setRoom(RoomEntity room) {
+        this.room = room;
+    }
+
+    public UserEntity getUser() {
+        return user;
+    }
+
+    public void setUser(UserEntity user) {
+        this.user = user;
+    }
+
     @Override
     public String toString() {
         return "OrderEntity{" +
                 "id=" + id +
-                ", roomId=" + roomId +
                 ", roomCount=" + roomCount +
-                ", userId=" + userId +
                 ", guestName='" + guestName + '\'' +
                 ", guestMobile='" + guestMobile + '\'' +
                 ", startTime=" + startTime +
                 ", endTime=" + endTime +
                 ", createdAt=" + createdAt +
+                ", room=" + room +
+                ", user=" + user +
                 '}';
     }
 }

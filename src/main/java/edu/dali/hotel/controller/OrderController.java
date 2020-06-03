@@ -5,6 +5,7 @@ import edu.dali.hotel.model.RoomEntity;
 import edu.dali.hotel.model.UserEntity;
 import edu.dali.hotel.service.OrderService;
 import edu.dali.hotel.service.RoomService;
+import edu.dali.hotel.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,6 +27,9 @@ public class OrderController {
     @Autowired
     private RoomService roomService;
 
+    @Autowired
+    private UserService userService;
+
 
     @GetMapping("/booking/{id}")
     public String booking(@PathVariable Integer id,
@@ -42,9 +46,8 @@ public class OrderController {
                        HttpSession session) {
 
         OrderEntity o;
-        UserEntity user = (UserEntity)session.getAttribute("user");
-        order.setRoomId(id);
-        order.setUserId(user.getId());
+        order.setRoom(roomService.getRoomById(id));
+        order.setUser((UserEntity) session.getAttribute("user"));
         o = orderService.saveOrder(order);
 
         if (o == null) {

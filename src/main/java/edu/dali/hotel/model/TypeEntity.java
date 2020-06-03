@@ -1,50 +1,45 @@
 package edu.dali.hotel.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "m_type")
 public class TypeEntity {
-    private int id;
-    private String title;
 
     @Id
-    @Column(name = "id")
-    public int getId() {
+    @GeneratedValue
+    private Integer id;
+    private String name;
+
+    @OneToMany(mappedBy = "type")
+    private List<RoomEntity> room = new ArrayList<>();
+
+    public TypeEntity() {
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "title")
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        TypeEntity that = (TypeEntity) o;
-
-        if (id != that.id) return false;
-        if (title != null ? !title.equals(that.title) : that.title != null) return false;
-
-        return true;
+    public List<RoomEntity> getRoom() {
+        return room;
     }
 
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (title != null ? title.hashCode() : 0);
-        return result;
+    public void setRoom(List<RoomEntity> room) {
+        this.room = room;
     }
 }

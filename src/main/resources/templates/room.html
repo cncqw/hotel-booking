@@ -71,7 +71,7 @@
                         <i class="dropdown icon"></i>
                         <div class="default text">房型</div>
                         <div class="menu">
-                            <div th:each="type : ${types}" th:data-value="${type.id}" th:text="${type.title}"
+                            <div th:each="type : ${types}" th:data-value="${type.id}" th:text="${type.name}"
                                  class="item" data-value="1">大床房
                             </div>
                         </div>
@@ -105,10 +105,10 @@
                             </div>
                         </div>
                         <div class="description">
-                            <p>床型：<span th:text="${room.typeId}">大床房</span>
+                            <p> 床型：<span th:text="${room.type.name}">大床房</span>
                                 &nbsp;&nbsp;面积：<span th:text="${room.area}">48</span>㎡
                                 &nbsp;&nbsp;楼层：<span th:text="${room.floor}">6-7 </span>
-                                &nbsp;&nbsp;含早：<span th:text="${room.isBreakfast}==0?'不含早':'含双早'">是</span>
+                                &nbsp;&nbsp;含早：<span th:text="${room.breakfast}?'含双早':'不含早'">是</span>
                             </p>
                         </div>
                     </div>
@@ -125,7 +125,6 @@
 
 
 </div>
-</div>
 
 <br>
 <br>
@@ -138,7 +137,7 @@
 
 </footer>
 
-<!--  <th:block th:replace="_fragment::script">-->
+<!--  <th:block th:replace="_fragments::script">-->
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
 

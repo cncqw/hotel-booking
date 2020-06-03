@@ -2,6 +2,7 @@ package edu.dali.hotel.interceptor;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
@@ -10,6 +11,14 @@ public class WebConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new LoginInterceptor())
                 .addPathPatterns("/hotel/**")
-                .excludePathPatterns("/user/logout");
+                //.excludePathPatterns("/static/**")
+                //.excludePathPatterns("/user/login")
+                .excludePathPatterns("/login");
     }
+
+//    @Override
+//    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+//        registry.addResourceHandler("/static/**", "/images/**", "/css/**", "/js/**", "/fonts/**")
+//                .addResourceLocations("classpath:/static/**");
+//    }
 }
