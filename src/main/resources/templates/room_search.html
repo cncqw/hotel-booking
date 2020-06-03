@@ -58,7 +58,7 @@
         <form action="#" th:action="@{/hotel/room/search}" method="post" class="ui segment form">
             <div class="inline fields">
                 <div class="field">
-                    <input type="text" name="name" placeholder="名称" autocomplete="off">
+                    <input type="text" th:value="${param.name}" name="name" placeholder="名称" autocomplete="off">
                 </div>
                 <div class="field">
                     <div class="ui selection dropdown">
@@ -79,7 +79,8 @@
                     </div>
                 </div>
                 <div class="field">
-                    <button class="ui mini teal basic button"><i class="search icon"></i>搜索房间</button>
+                    <button class="ui mini teal submit basic button"><i class="search icon"></i>搜索房间</button>
+                    <button class="ui mini basic clear button">清空</button>
                 </div>
             </div>
         </form>
@@ -100,10 +101,10 @@
                             </div>
                         </div>
                         <div class="description">
-                            <p> 房型：<span th:text="${room.type.name}">大床房</span>
+                            <p> 床型：<span th:text="${room.type.name}">大床房</span>
                                 &nbsp;&nbsp;面积：<span th:text="${room.area}">48</span>㎡
                                 &nbsp;&nbsp;楼层：<span th:text="${room.floor}">6-7 </span>
-                                &nbsp;&nbsp;<span th:text="${room.breakfast}?'含双早':'不含早'">是</span>
+                                &nbsp;&nbsp;含早：<span th:text="${room.breakfast}?'含双早':'不含早'">是</span>
                             </p>
                         </div>
                     </div>
@@ -126,27 +127,32 @@
         <div class="ui inverted section divider"></div>
         <p class="m-text-thin m-text-spaced m-opacity-tiny">Copyright © 2020 酒店管理系统</p>
     </div>
-
 </footer>
 
 <th:block th:replace="_fragments::script">
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
-<script>
-    $('.menu.toggle').click(function () {
-        $('.m-item').toggleClass('m-mobile-hide');
-    });
-    $('.ui.dropdown').dropdown({
-        on: 'hover'
-    });
-</script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+
+    <script>
+        $('.menu.toggle').click(function () {
+            $('.m-item').toggleClass('m-mobile-hide');
+        });
+
+        $('.ui.dropdown').dropdown({
+            on: 'hover'
+        });
+    </script>
 </th:block>
 <script>
     $('.ui.rating')
         .rating('disable', {
             initialRating: 5,
             maxRating: 5
-        });
+        })
+
+    $('.clear').click(function () {
+        $('.ui.form').form('clear');
+    })
 </script>
 </body>
 </html>

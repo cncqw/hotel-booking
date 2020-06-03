@@ -50,18 +50,15 @@ public class OrderController {
         order.setUser((UserEntity) session.getAttribute("user"));
         o = orderService.saveOrder(order);
 
-        if (o == null) {
-            attributes.addFlashAttribute("message", "预订失败");
-            return "redirect:/hotel/room";
-        } else {
-            attributes.addFlashAttribute("message", "预订成功");
-            return "redirect:/hotel/order/message";
+        if (o != null) {
+            attributes.addFlashAttribute("result", true);
         }
 
+        return "redirect:/hotel/order/message";
     }
 
     @GetMapping("/order/message")
-    public String messagePage() {
-        return "success";
+    public String messagePage(RedirectAttributes attributes) {
+        return "message";
     }
 }

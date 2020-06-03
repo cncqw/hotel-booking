@@ -16,7 +16,7 @@
         <div class="login_logo"><a href="#"><img src="../../static/images/login_logo.png" th:src="@{/images/login_logo.png}" /></a>
         </div>
         <div class="login_name">
-            <p>后台管理系统</p>
+            <p>酒店管理系统</p>
         </div>
         <form method="post" action="#" th:action="@{/user/login}">
             <input name="username" type="text" value="用户名" onfocus="this.value=''"
@@ -29,7 +29,7 @@
         </form>
         <div class="login_message" th:unless="${#strings.isEmpty(message)}" th:text="${message}">* 用户名或密码错误</div>
     </div>
-    <div class="copyright">某某有限公司 版权所有©2020</div>
+    <div class="copyright">Copyright © 2020 酒店管理系统</div>
 </div>
 </body>
 </html>

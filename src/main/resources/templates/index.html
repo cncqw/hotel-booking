@@ -38,7 +38,8 @@
     <div class="ui positive message">
         <i class="close icon"></i>
         <div class="header">
-            欢迎登录，张先生！
+            欢迎登录，<span th:text="${session.user.name}">管理员</span>
+            <span th:text="${session.user.gender}?'先生':'女士'">叔叔</span> !
         </div>
     </div>
 
@@ -48,7 +49,7 @@
                 <img src="//img.alicdn.com/bao/uploaded/i8/TB1O0FhbJPJ3eJjSZFLEvKb3FXa_014455.jpg_450x10000.jpg">
             </div>
             <div class="content">
-                <a class="header" href="#" th:href="@{/hotel/room}">大理大学国际大酒店</a>
+                <a class="ui blue header" href="#" th:href="@{/hotel/room}">大理大学国际大酒店</a>
                 <div class="description">
                     <p>大理大学位于滇西中心城市——大理。校园占地面积2300多亩，有古城和下关两个校区。学校芳草凝绿、鸟语花香，被誉为“山水中的大学、大学中的山水”。</p>
                 </div>
@@ -58,15 +59,12 @@
                 <div class="ui right floated column">
                     <a href="#" th:href="@{/hotel/room}" class="ui blue button">查看详情</a>
                 </div>
-
             </div>
-<!--            <div class="ui center aligned">-->
-<!--                <a href="#" th:href="@{/hotel/room}" class="ui teal button">预定</a>-->
-<!--            </div>-->
+
         </div>
     </div>
 
-    <img class="ui fluid image" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1591099816534&di=f8fabae939863d787a05b09be138d2b1&imgtype=0&src=http%3A%2F%2Fn.sinaimg.cn%2Ftranslate%2F418%2Fw800h418%2F20180528%2FzZyF-hcaquev5117308.jpg">
+    <img class="ui fluid image" src="http://n.sinaimg.cn/translate/418/w800h418/20180528/zZyF-hcaquev5117308.jpg">
 
 </div>
 
@@ -80,7 +78,7 @@
 
 </footer>
 
-<!--  <th:block th:replace="_fragments::script">-->
+<th:block th:replace="_fragments::script">
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
 
@@ -93,14 +91,13 @@
         on: 'hover'
     });
 </script>
-<!--  </th:block>-->
+</th:block>
 <script>
     $('.ui.rating')
         .rating('disable', {
             initialRating: 5,
             maxRating: 5
-        })
-    ;
+        });
 
     $('.message .close')
         .on('click', function () {
@@ -108,9 +105,7 @@
                 .closest('.message')
                 .transition('fade')
             ;
-        })
-    ;
-
+        });
 </script>
 </body>
 </html>

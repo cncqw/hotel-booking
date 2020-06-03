@@ -52,10 +52,12 @@ $(document).ready(function () {
     })
 });
 
+today = new Date;
+
 $('.start_time').calendar({
     type: 'date',
     today: true,
-    endCalendar: $('.start_time'),
+    minDate:today,
     formatter: {
         date: function (date, settings) {
             if (!date) return '';
@@ -64,11 +66,12 @@ $('.start_time').calendar({
             var day = date.getDate();
             month = month < 10 ? '0' + month : month;
             day = day < 10 ? '0' + day : day;
-            return year + '-' + month + '-' + day;//字段类型是Datetime,节省时间直接在这里处理
+            return year + '-' + month + '-' + day;
         }
     },
     text: {
         days: ['日', '一', '二', '三', '四', '五', '六'],
+        today: '今天',
     },
 });
 
@@ -89,7 +92,6 @@ $('.end_time').calendar({
     },
     text: {
         days: ['日', '一', '二', '三', '四', '五', '六'],
-        today: '今天',
     },
 });
 
