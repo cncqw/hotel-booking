@@ -3,6 +3,10 @@ body {
     background: url("../images/bg.png");
 }
 
+.white{
+    color: #ffffff!important;
+}
+
 .m-list {
     padding: 1.5rem 1rem !important;
 }

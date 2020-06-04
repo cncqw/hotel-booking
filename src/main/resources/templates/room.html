@@ -58,7 +58,7 @@
         <form action="#" th:action="@{/hotel/room/search}" method="post" class="ui segment form">
             <div class="inline fields">
                 <div class="field">
-                    <input type="text" name="name" placeholder="名称" autocomplete="off">
+                    <input type="text" name="name" placeholder="名称" autocomplete="off" th:value="${param?.name}">
                 </div>
                 <div class="field">
                     <div class="ui selection dropdown">
@@ -74,7 +74,7 @@
                 </div>
                 <div class="field">
                     <div class="ui checkbox">
-                        <input type="checkbox" id="breakfast" name="breakfast">
+                        <input type="checkbox" id="breakfast" name="breakfast"/>
                         <label for="breakfast">含早</label>
                     </div>
                 </div>

@@ -34,7 +34,7 @@ public class RoomController {
     public String search(RoomQuery room, Model model) {
         model.addAttribute("types", typeService.listType());
         model.addAttribute("rooms",roomService.listRoom(room));
-        return "room_search";
+        return "room";
     }
 
 }
